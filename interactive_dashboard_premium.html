@@ -352,6 +352,17 @@
             }
         }
 
+        /* Chart containers */
+        #forecastChart,
+        #modelComparisonChart,
+        #decompositionChart,
+        #monthlyChart,
+        #categoryChart,
+        #allModelsChart {
+            width: 100% !important;
+            margin: 0 auto;
+        }
+
         /* Loading Animation */
         .loading {
             display: flex;
@@ -603,9 +614,10 @@
                 size: 12,
                 color: '#4a5568'
             },
-            margin: { t: 20, r: 30, b: 50, l: 60 },
+            margin: { t: 30, r: 40, b: 60, l: 70 },
             hovermode: 'x unified',
             showlegend: true,
+            autosize: true,
             legend: {
                 orientation: 'h',
                 yanchor: 'bottom',
@@ -619,12 +631,14 @@
             xaxis: {
                 gridcolor: '#e2e8f0',
                 showgrid: true,
-                zeroline: false
+                zeroline: false,
+                automargin: true
             },
             yaxis: {
                 gridcolor: '#e2e8f0',
                 showgrid: true,
-                zeroline: false
+                zeroline: false,
+                automargin: true
             }
         };
 
@@ -632,7 +646,8 @@
             responsive: true,
             displayModeBar: true,
             displaylogo: false,
-            modeBarButtonsToRemove: ['lasso2d', 'select2d']
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            autosizable: true
         };
 
         // Generate sample data (replace with your actual data loading)
@@ -727,8 +742,6 @@
             chartLayout.height = 400;
             chartLayout.yaxis.title = 'Daily Sales ($)';
             chartLayout.xaxis.title = 'Date';
-            chartLayout.autosize = true;
-            chartLayout.margin = { t: 20, r: 40, b: 60, l: 80 };
 
             Plotly.newPlot('forecastChart', traces, chartLayout, config);
         }
