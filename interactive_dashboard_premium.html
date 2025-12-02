@@ -361,6 +361,13 @@
         #allModelsChart {
             width: 100% !important;
             margin: 0 auto;
+            display: block;
+        }
+
+        /* Force Plotly plots to center */
+        .js-plotly-plot,
+        .plotly {
+            margin: 0 auto !important;
         }
 
         /* Loading Animation */
@@ -614,7 +621,7 @@
                 size: 12,
                 color: '#4a5568'
             },
-            margin: { t: 30, r: 40, b: 60, l: 70 },
+            margin: { t: 30, r: 50, b: 60, l: 80 },
             hovermode: 'x unified',
             showlegend: true,
             autosize: true,
@@ -693,6 +700,10 @@
 
         // Chart 1: Main Forecast with Confidence Intervals
         function createForecastChart() {
+            // Remove loading state
+            document.getElementById('forecastChart').classList.remove('loading');
+            document.getElementById('forecastChart').innerHTML = '';
+
             const data = generateData();
 
             const traces = [
